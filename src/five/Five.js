@@ -6,6 +6,7 @@ import Player from './Player';
 class Five {
     constructor(){
         this.init();
+        this._onUpdateState = null;
     }
     init(){
         this.board = new Board();
@@ -46,6 +47,9 @@ class Five {
             this.renderBoard();
         }
     }
+    onUpdateState(callback){
+        this._onUpdateState = callback;
+    }
     renderBoard(){
         var forkedHistory = [].concat(this.history);
         forkedHistory.length = this.currentStep+1;
@@ -66,6 +70,7 @@ class Five {
             });
             this.winner = winner;
         }
+        this._onUpdateState && this._onUpdateState();
     }
 }
 
