@@ -55,6 +55,7 @@
 <script>
     import Five from './five/Five';
     var five = new Five();
+    window.five = five;
 
     export default {
         name: 'app',

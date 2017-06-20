@@ -10,7 +10,11 @@ class Board {
         return this._board;
     }
     getChessman(row,col){
-        return this._board[row][col];
+        try{
+            return this._board[row][col];
+        }catch(e){
+            return undefined;
+        }
     }
     forEach(callback){
         var i,j;
@@ -103,10 +107,13 @@ class Board {
                             break;
                     }
                     var nextOne = _this.getChessman(nextRow,nextCol);
-                    if( nextOne && nextOne.state !== type){
-                        return result;
+                    if( nextOne ){
+                        if(nextOne.state !== type){
+                            return result;
+                        }else{
+                            result.push({row:nextRow,col:nextCol});
+                        }
                     }
-                    result.push({row:nextRow,col:nextCol});
                 }
                 return result;
             }
@@ -119,6 +126,7 @@ class Board {
             var prevArr = getNextSameType(false,type,direction);
             var result = nextArr.length + prevArr.length + 1;
             if(result >=5){
+                console.log({row,col},direction,nextArr,prevArr);
                 winnerType = type;
                 return true;
             }else{
