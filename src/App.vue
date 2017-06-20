@@ -1,15 +1,27 @@
 <style lang="less" type="text/less">
+    @r:20px;
     .chess-row{
+        display:inline-block;
         overflow:hidden;
+        @c:red;
+        background-image:
+            linear-gradient(0deg, @c 0px, @c 2px, transparent 2px, transparent 100%),
+            linear-gradient(90deg, @c 0px, @c 2px, transparent 2px, transparent 100%)
+    ;
+        background-size: 40px 40px;
+        background-position: @r @r, @r @r, @r @r, @r @r;
     }
     .chessman{
         height:40px;
         width:40px;
         float:left;
         box-sizing:border-box;
-        border:1px solid #fff;
+        border-radius:99px;
+        border:1px solid #ccc;
+        transform:scale(0.7);
         &.state-0{
-            background:#eee;
+            /*background:#eee;*/
+            border:none;
         }
         &.state-1{
             background:#333;
@@ -32,6 +44,7 @@
 <template>
     <div>
         now: {{five.getNextStepPlayer().name}} <br> winner:{{five.winner||'-------'}}
+        <div></div>
         <div v-for="row,i in five.board.getBoard()" class="chess-row">
             <div v-for="chessman,j in row">
                 <div :class="{
@@ -41,6 +54,7 @@
                 }" @click="five.nextStepChoseHere(i,j)"></div>
             </div>
         </div>
+        <div></div>
         <button @click="five.historyGo(-2);">悔棋</button>
         <button @click="five.historyGo(2);">撤销悔棋</button>
         <button @click="five.init();">初始化</button>
