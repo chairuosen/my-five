@@ -43,6 +43,7 @@
         </div>
         <button @click="five.historyGo(-2);">悔棋</button>
         <button @click="five.historyGo(2);">撤销悔棋</button>
+        <button @click="five.init();">初始化</button>
         <h4>History</h4>
         <ul class="history">
             <li v-for="h,i in five.history" :class="{current:i===five.currentStep}">

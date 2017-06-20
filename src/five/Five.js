@@ -5,6 +5,9 @@ import Player from './Player';
 
 class Five {
     constructor(){
+        this.init();
+    }
+    init(){
         this.board = new Board();
         this.player = [
             new Player('me',CHESSMAN_STATE.BLACK), // black

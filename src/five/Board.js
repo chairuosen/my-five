@@ -126,7 +126,6 @@ class Board {
             var prevArr = getNextSameType(false,type,direction);
             var result = nextArr.length + prevArr.length + 1;
             if(result >=5){
-                console.log({row,col},direction,nextArr,prevArr);
                 winnerType = type;
                 return true;
             }else{
