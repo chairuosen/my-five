@@ -7,10 +7,11 @@ class Five {
     constructor(){
         this.board = new Board();
         this.player = [
-            new Player('me','black'), // black
-            new Player('Alpha Go','white')
+            new Player('me',CHESSMAN_STATE.BLACK), // black
+            new Player('Alpha Go',CHESSMAN_STATE.WHITE)
         ];
         this.history = [];
+        this.winner = null;
         this.currentStep = -1;// first step is 0;
     }
     getLastChessmanPosition(){
@@ -49,8 +50,19 @@ class Five {
         forkedHistory.forEach( (obj,index) => {
             var chessman = this.board.getChessman(obj.row,obj.col);
             var player = this.getNextStepPlayer(index-1);
-            chessman.setState(player.color==='black' ? 1 : 2);
-        })
+            chessman.setState(player.type);
+        });
+        var winnerType = this.board.boardChecker();
+        if(winnerType>0){
+            var winner;
+            this.player.forEach((player)=>{
+                if(player.type===winnerType){
+                    winner = player;
+                }
+                player.lock();
+            });
+            this.winner = winner;
+        }
     }
 }
 

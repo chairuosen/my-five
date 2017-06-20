@@ -11,6 +11,9 @@ class Chessman {
     isLocked(){
         return this.state !== CHESSMAN_STATE.DEFAULT;
     }
+    isEmpty(){
+        return this.state === CHESSMAN_STATE.DEFAULT;
+    }
     reset(){
         this.state = CHESSMAN_STATE.DEFAULT;
     }

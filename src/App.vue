@@ -31,7 +31,7 @@
 
 <template>
     <div id="app">
-        now: {{five.getNextStepPlayer().name}}
+        now: {{five.getNextStepPlayer().name}}  winner:{{five.winner||'-------'}}
         <div v-for="row,i in five.board.getBoard()" class="chess-row">
             <div v-for="chessman,j in row">
                 <div :class="{

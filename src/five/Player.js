@@ -1,7 +1,7 @@
 export default class Player {
-    constructor(name,color){
+    constructor(name,type){
         this.name = name;
-        this.color = color;
+        this.type = type;
         this.locked = false;
     }
     lock(){
