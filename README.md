@@ -1,4 +1,7 @@
-# my-five
+# 五子棋
+
+demo:http://demo.ruosen.io/my-five/dist/
+idea by: http://www.jianshu.com/p/a9fc5f752156
 
 > A Vue.js project
 
